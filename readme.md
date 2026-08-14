@@ -12,7 +12,7 @@ CORAL formulates this problem as constrained optimization and provides theoretic
 
 ## Method
 
-Let $X \in \mathbb{R}^{n\times p}$ be a standardized data matrix with correlation matrix $R$, and let $T=[t_1,\ldots,t_p]$ be a transformation matrix defining the transformed data:
+Let `X` be a standardized n-by-p data matrix (n observations, p variables) with correlation matrix `R`, and let `T = [t_1, ..., t_p]` be a transformation matrix defining the transformed data:
 
 ```math
 \widetilde{X}=XT
@@ -36,7 +36,7 @@ The primary CORAL objective minimizes aggregate squared residual correlation:
 D_2(T)=\sum_{i<j}(t_i^\top R t_j)^2
 ```
 
-Thus, $\rho_{\min}$ controls the minimum permitted source fidelity, while $D_2(T)$ measures aggregate remaining squared correlation among the transformed variables.
+Thus, `rho_min` controls the minimum permitted source fidelity, while `D_2(T)` measures aggregate remaining squared correlation among the transformed variables.
 
 ## Geometric Interpretation
 
@@ -46,7 +46,7 @@ CORAL has a useful geometric interpretation through the reparameterization
 W=R^{1/2}T
 ```
 
-If $w_j=R^{1/2}t_j$, the unit-variance constraint becomes
+If `w_j=R^1/2t_j`, the unit-variance constraint becomes
 
 ```math
 w_j^\top w_j=1
@@ -70,7 +70,7 @@ CORAL therefore seeks vectors within their permitted fidelity regions that are a
 
 ## Exact-Decorrelation Family
 
-For a symmetric positive-definite correlation matrix $R$, every square exact decorrelator belongs to the family
+For a symmetric positive-definite correlation matrix `R`, every square exact decorrelator belongs to the family
 
 ```math
 \mathcal{D}(R)=\left\{R^{-1/2}Q:Q\in O(p)\right\}
@@ -130,15 +130,15 @@ A general trace upper bound is
 \rho_\star(R)\leq\frac{\operatorname{tr}(A)}{p}
 ```
 
-Stronger upper bounds can be obtained from nonempty subsets $S$ of the source variables:
+Stronger upper bounds can be obtained from nonempty subsets `S` of the source variables:
 
 ```math
 \rho_\star(R)\leq\frac{\left\|A_{[:,S]}\right\|_\ast}{|S|}
 ```
 
-where $\|\cdot\|_\ast$ denotes the nuclear norm.
+where `|cdot|_ast` denotes the nuclear norm.
 
-Combining a numerically achieved exact-decorrelation fidelity with rigorous upper bounds produces a numerical interval containing $\rho_\star(R)$.
+Combining a numerically achieved exact-decorrelation fidelity with rigorous upper bounds produces a numerical interval containing `rho_star(R)`.
 
 ## Comparison with PCA and ZCA
 
@@ -184,7 +184,7 @@ It achieves exact decorrelation:
 T_{\mathrm{ZCA}}^\top R T_{\mathrm{ZCA}}=I
 ```
 
-Its source fidelities are the diagonal elements of $R^{1/2}$, so its minimum source fidelity is
+Its source fidelities are the diagonal elements of `R^1/2`, so its minimum source fidelity is
 
 ```math
 \rho_{\mathrm{ZCA}}=\min_j(R^{1/2})_{jj}
@@ -196,7 +196,7 @@ Therefore,
 \rho_{\mathrm{ZCA}}\leq\rho_\star(R)
 ```
 
-ZCA provides a constructive exact decorrelator, while CORAL searches the broader family $R^{-1/2}O(p)$ for transformations that better preserve the weakest source-variable correspondence.
+ZCA provides a constructive exact decorrelator, while CORAL searches the broader family `R^-1/2O(p)` for transformations that better preserve the weakest source-variable correspondence.
 
 ## Repository Structure
 
@@ -236,7 +236,7 @@ The paper develops:
 - the oblique-manifold reparameterization
 - the geometric interpretation
 - exact-decorrelation theory
-- the threshold $\rho_\star(R)$
+- the threshold `rho_star(R)`
 - constructive lower and rigorous upper bounds
 - PCA and ZCA benchmarks
 - support-restricted CORAL
@@ -254,9 +254,9 @@ It includes implementations for:
 
 - hard-constrained CORAL optimization
 - dense fidelity-decorrelation frontiers
-- computation of $\rho_\star(R)$
-- constructive lower bounds for $\rho_\star(R)$
-- rigorous upper bounds for $\rho_\star(R)$
+- computation of `rho_star(R)`
+- constructive lower bounds for `rho_star(R)`
+- rigorous upper bounds for `rho_star(R)`
 - PCA benchmarks
 - ZCA benchmarks
 - support-restricted CORAL
@@ -274,7 +274,7 @@ The application is implemented in Python using Streamlit and allows users to:
 
 - upload a dataframe
 - select continuous variables
-- declare a fidelity threshold $\rho_{\min}$
+- declare a fidelity threshold `rho_min`
 - run CORAL
 - compare CORAL with PCA and ZCA
 - inspect source fidelity
@@ -291,12 +291,12 @@ The program reports quantities including:
 - mean source fidelity
 - maximum absolute residual correlation
 - mean absolute residual correlation
-- aggregate squared residual correlation $D_2$
+- aggregate squared residual correlation `D_2`
 - fidelity-constraint satisfaction
 - transformation matrices
 - transformed observations
 - correlation matrices
-- estimates and bounds for $\rho_\star(R)$
+- estimates and bounds for `rho_star(R)`
 
 ## Installation
 
@@ -347,13 +347,13 @@ Open this address in a browser to use CORAL interactively.
 
 1. Upload a CSV, Excel, Parquet, or other supported dataframe.
 2. Select the continuous variables to transform.
-3. Choose the minimum source fidelity $\rho_{\min}$.
+3. Choose the minimum source fidelity `rho_min`.
 4. Run CORAL.
 5. Compare CORAL with the original correlation structure, PCA, and ZCA.
 6. Examine minimum and mean source fidelity.
 7. Examine maximum and mean residual correlation.
-8. Examine the aggregate decorrelation objective $D_2$.
-9. Evaluate $\rho_\star(R)$ and its bounds.
+8. Examine the aggregate decorrelation objective `D_2`.
+9. Evaluate `rho_star(R)` and its bounds.
 10. Determine whether exact decorrelation is compatible with the declared fidelity.
 
 A high requested fidelity can make exact decorrelation mathematically impossible.
@@ -393,7 +393,7 @@ The central CORAL trade-off is between source fidelity and decorrelation.
 
 At low or moderate fidelity requirements, exact decorrelation may remain feasible.
 
-As $\rho_{\min}$ increases, the feasible region contracts. Once $\rho_{\min}$ exceeds $\rho_\star(R)$, exact decorrelation becomes impossible and residual correlations must remain.
+As `rho_min` increases, the feasible region contracts. Once `rho_min` exceeds `rho_star(R)`, exact decorrelation becomes impossible and residual correlations must remain.
 
 The two regimes are therefore:
 
@@ -491,13 +491,13 @@ The CORAL objective is
 D_2(T)=\sum_{i<j}(t_i^\top R t_j)^2
 ```
 
-Because CORAL minimizes $D_2(T)$ rather than $r_{\max}$, a solution can have a relatively small aggregate objective while retaining a larger residual correlation for an individual pair.
+Because CORAL minimizes `D_2(T)` rather than `r_max`, a solution can have a relatively small aggregate objective while retaining a larger residual correlation for an individual pair.
 
 ## Support-Restricted CORAL
 
 CORAL can also restrict which source variables may contribute to each transformed coordinate.
 
-Let $\Omega$ denote the declared set of permitted transformation coefficients. Then
+Let `Omega` denote the declared set of permitted transformation coefficients. Then
 
 ```math
 t_{ij}=0\quad\text{for all }(i,j)\notin\Omega
@@ -530,7 +530,7 @@ This distinction is useful when the identities of individual transformed variabl
 
 ## Example: High-Fidelity Constraints
 
-Suppose an analyst selects $\rho_{\min}=0.95$.
+Suppose an analyst selects `rho_min=0.95`.
 
 CORAL then requires
 
@@ -548,7 +548,7 @@ If the system satisfies
 
 exact decorrelation is impossible under that requirement.
 
-CORAL still finds the transformation minimizing $D_2(T)$ subject to the requested fidelity, but some residual correlations must remain.
+CORAL still finds the transformation minimizing `D_2(T)` subject to the requested fidelity, but some residual correlations must remain.
 
 This behavior is a feature of the method rather than a numerical failure: the requested source fidelity constrains how far each transformed coordinate may move from its designated source.
 
@@ -564,7 +564,7 @@ A complementary minimax formulation could minimize the largest remaining absolut
 
 This would directly control the worst remaining pairwise dependence rather than aggregate squared dependence.
 
-A corresponding decorrelation-constrained formulation could maximize common source fidelity $\gamma$ subject to a declared maximum residual correlation $\delta$:
+A corresponding decorrelation-constrained formulation could maximize common source fidelity `gamma` subject to a declared maximum residual correlation `delta`:
 
 ```math
 \max_{T,\gamma}\gamma
@@ -594,13 +594,13 @@ More general Pareto formulations could jointly characterize:
 
 The anchoring framework could also be generalized from individual source coordinates to domain-specified basis vectors.
 
-For a declared basis vector $b_j$, source fidelity could be defined as
+For a declared basis vector `b_j`, source fidelity could be defined as
 
 ```math
 \operatorname{Cor}(Xb_j,Xt_j)=\frac{b_j^\top R t_j}{\sqrt{(b_j^\top R b_j)(t_j^\top R t_j)}}
 ```
 
-If both vectors are normalized under $R$, this reduces to
+If both vectors are normalized under `R`, this reduces to
 
 ```math
 b_j^\top R t_j\geq\rho_{\min}
