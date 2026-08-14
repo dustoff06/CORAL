@@ -33,7 +33,7 @@ e_j^\top R t_j\geq\rho_{\min}
 The primary CORAL objective minimizes aggregate squared residual correlation:
 
 ```math
-D_2(T)=\sum_{i<j}(t_i^\top R t_j)^2
+D_2(T)=\sum_{i \lt j}(t_i^\top R t_j)^2
 ```
 
 Thus, `rho_min` controls the minimum permitted source fidelity, while `D_2(T)` measures aggregate remaining squared correlation among the transformed variables.
@@ -63,7 +63,7 @@ which restricts each transformed direction to a spherical cap.
 The decorrelation objective becomes
 
 ```math
-D_2(W)=\sum_{i<j}(w_i^\top w_j)^2
+D_2(W)=\sum_{i \lt j}(w_i^\top w_j)^2
 ```
 
 CORAL therefore seeks vectors within their permitted fidelity regions that are as mutually orthogonal as possible.
@@ -414,7 +414,7 @@ CORAL makes this trade-off explicit rather than allowing interpretability to eme
 The current CORAL estimator solves
 
 ```math
-\min_T\sum_{i<j}(t_i^\top R t_j)^2
+\min_T\sum_{i \lt j}(t_i^\top R t_j)^2
 ```
 
 subject to
@@ -472,7 +472,7 @@ Mean source fidelity is
 The largest remaining absolute pairwise correlation is
 
 ```math
-r_{\max}=\max_{i<j}\left|t_i^\top R t_j\right|
+r_{\max}=\max_{i \lt j}\left|t_i^\top R t_j\right|
 ```
 
 ### Mean Absolute Residual Correlation
@@ -480,7 +480,7 @@ r_{\max}=\max_{i<j}\left|t_i^\top R t_j\right|
 Mean absolute residual correlation is
 
 ```math
-\bar{r}=\frac{2}{p(p-1)}\sum_{i<j}\left|t_i^\top R t_j\right|
+\bar{r}=\frac{2}{p(p-1)}\sum_{i \lt j}\left|t_i^\top R t_j\right|
 ```
 
 ### Aggregate Squared Residual Correlation
@@ -488,7 +488,7 @@ Mean absolute residual correlation is
 The CORAL objective is
 
 ```math
-D_2(T)=\sum_{i<j}(t_i^\top R t_j)^2
+D_2(T)=\sum_{i \lt j}(t_i^\top R t_j)^2
 ```
 
 Because CORAL minimizes `D_2(T)` rather than `r_max`, a solution can have a relatively small aggregate objective while retaining a larger residual correlation for an individual pair.
@@ -559,7 +559,7 @@ Several extensions follow naturally from the CORAL framework.
 A complementary minimax formulation could minimize the largest remaining absolute pairwise correlation:
 
 ```math
-\min_T\max_{i<j}\left|t_i^\top R t_j\right|
+\min_T\max_{i \lt j}\left|t_i^\top R t_j\right|
 ```
 
 This would directly control the worst remaining pairwise dependence rather than aggregate squared dependence.
