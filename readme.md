@@ -127,7 +127,7 @@ ZCA provides a constructive lower bound:
 A general trace upper bound is
 
 ```math
-\rho_\star(R)\leq\frac{\operatorname{tr}(A)}{p}
+\rho_\star(R)\leq\frac{\mathrm{tr}(A)}{p}
 ```
 
 Stronger upper bounds can be obtained from nonempty subsets `S` of the source variables:
@@ -597,7 +597,7 @@ The anchoring framework could also be generalized from individual source coordin
 For a declared basis vector `b_j`, source fidelity could be defined as
 
 ```math
-\operatorname{Cor}(Xb_j,Xt_j)=\frac{b_j^\top R t_j}{\sqrt{(b_j^\top R b_j)(t_j^\top R t_j)}}
+\mathrm{Cor}(Xb_j,Xt_j)=\frac{b_j^\top R t_j}{\sqrt{(b_j^\top R b_j)(t_j^\top R t_j)}}
 ```
 
 If both vectors are normalized under `R`, this reduces to
