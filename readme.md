@@ -46,7 +46,7 @@ CORAL has a useful geometric interpretation through the reparameterization
 W=R^{1/2}T
 ```
 
-If `w_j=R^1/2t_j`, the unit-variance constraint becomes
+If `w_j=R^{1/2}t_j`, the unit-variance constraint becomes
 
 ```math
 w_j^\top w_j=1
@@ -127,7 +127,7 @@ ZCA provides a constructive lower bound:
 A general trace upper bound is
 
 ```math
-\rho_\star(R)\leq\frac{\operatorname{tr}(A)}{p}
+\rho_\star(R)\leq\frac{\mathrm{tr}(A)}{p}
 ```
 
 Stronger upper bounds can be obtained from nonempty subsets `S` of the source variables:
@@ -136,7 +136,7 @@ Stronger upper bounds can be obtained from nonempty subsets `S` of the source va
 \rho_\star(R)\leq\frac{\left\|A_{[:,S]}\right\|_\ast}{|S|}
 ```
 
-where `|cdot|_ast` denotes the nuclear norm.
+where `||.||_*` denotes the nuclear norm.
 
 Combining a numerically achieved exact-decorrelation fidelity with rigorous upper bounds produces a numerical interval containing `rho_star(R)`.
 
@@ -184,7 +184,7 @@ It achieves exact decorrelation:
 T_{\mathrm{ZCA}}^\top R T_{\mathrm{ZCA}}=I
 ```
 
-Its source fidelities are the diagonal elements of `R^1/2`, so its minimum source fidelity is
+Its source fidelities are the diagonal elements of `R^{1/2}`, so its minimum source fidelity is
 
 ```math
 \rho_{\mathrm{ZCA}}=\min_j(R^{1/2})_{jj}
@@ -196,7 +196,7 @@ Therefore,
 \rho_{\mathrm{ZCA}}\leq\rho_\star(R)
 ```
 
-ZCA provides a constructive exact decorrelator, while CORAL searches the broader family `R^-1/2O(p)` for transformations that better preserve the weakest source-variable correspondence.
+ZCA provides a constructive exact decorrelator, while CORAL searches the broader family `R^{-1/2}O(p)` for transformations that better preserve the weakest source-variable correspondence.
 
 ## Repository Structure
 
@@ -530,7 +530,7 @@ This distinction is useful when the identities of individual transformed variabl
 
 ## Example: High-Fidelity Constraints
 
-Suppose an analyst selects `rho_min=0.95`.
+Suppose an analyst selects `rho_min = 0.95`.
 
 CORAL then requires
 
@@ -597,7 +597,7 @@ The anchoring framework could also be generalized from individual source coordin
 For a declared basis vector `b_j`, source fidelity could be defined as
 
 ```math
-\operatorname{Cor}(Xb_j,Xt_j)=\frac{b_j^\top R t_j}{\sqrt{(b_j^\top R b_j)(t_j^\top R t_j)}}
+\mathrm{Cor}(Xb_j,Xt_j)=\frac{b_j^\top R t_j}{\sqrt{(b_j^\top R b_j)(t_j^\top R t_j)}}
 ```
 
 If both vectors are normalized under `R`, this reduces to
